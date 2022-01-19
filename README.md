@@ -7,7 +7,6 @@ node相关的通用工具
 ## features
 
 - pnpm 的
-- vitest 测试
 - 开箱即用的
 - typescript 的
 
@@ -47,10 +46,4 @@ pnpm coverage
 
 ```shell
 pnpm dev
-```
-
-### publish
-
-```shell
-pnpm publish
 ```

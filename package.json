@@ -1,10 +1,13 @@
 {
-  "name": "node-shared",
+  "name": "@markthree/node-shared",
   "version": "1.0.0",
   "description": "node相关的通用工具",
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
