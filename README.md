@@ -8,6 +8,7 @@ node相关的通用工具
 
 - pnpm 的
 - vitest 测试
+- 开箱即用的
 - typescript 的
 
 <br />
@@ -23,17 +24,33 @@ pnpm i
 ### test
 
 ```shell
-pnpm test:watch
+pnpm test
+
+// or pnpm test:watch
 ```
 
 ### build
 
 ```shell
 pnpm build
+
+// pnpm build:watch
 ```
 
 ### coverage
 
 ```shell
 pnpm coverage
+```
+
+### dev
+
+```shell
+pnpm dev
+```
+
+### publish
+
+```shell
+pnpm publish
 ```

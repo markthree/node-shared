@@ -1,3 +1,2 @@
-const foo = 1
-
-export { foo }
+export * from './fs'
+export * from './path'
