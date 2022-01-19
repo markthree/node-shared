@@ -1,6 +1,6 @@
-# vite-lib-template
+# node-shared
 
-开箱即用的vite库模板
+node相关的通用工具
 
 <br />
 
