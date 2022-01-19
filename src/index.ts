@@ -1,5 +1,6 @@
 export * from './fs'
 export * from './path'
+export * from './hash'
 export * from './execa'
 export * from './retry'
 export * from './color'
