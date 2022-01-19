@@ -1,9 +1,12 @@
-import { createPath, createGenWithTemplate } from '../src'
+import {
+	createPath,
+	createGenWithTemplate
+} from '../../src'
 
 const usePath = createPath(__dirname)
 
 const createTemplate = createGenWithTemplate(
-	usePath('./template/index.vue'),
+	usePath('../template/index.vue'),
 	(origin: string, payload: string[]) => {
 		return origin.replace(/\$/g, () => {
 			return payload.shift()
@@ -11,7 +14,7 @@ const createTemplate = createGenWithTemplate(
 	}
 )
 
-createTemplate(usePath('./src/index.vue'), [
+createTemplate(usePath('../src/index.vue'), [
 	'const foo = 100',
 	'你好，世界',
 	`.foo { background: red }`
