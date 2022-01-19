@@ -1,11 +1,18 @@
-import fse from 'fs-extra'
+import {
+	readFile,
+	ensureDir,
+	ensureFile,
+	outputFile,
+	pathExistsSync,
+	copy as fseCopy
+} from 'fs-extra'
 
 /**
  * 创建空文件
  */
 export const createEmptyFile = async (path: string) => {
 	try {
-		await fse.ensureFile(path)
+		await ensureFile(path)
 	} catch (err: any) {
 		console.log(err.message as string)
 	}
@@ -19,8 +26,7 @@ export const createFile = async (
 	data: string
 ) => {
 	try {
-		await createEmptyFile(path)
-		await fse.writeFile(path, data)
+		await outputFile(path, data)
 	} catch (err: any) {
 		console.log(err.message as string)
 	}
@@ -45,7 +51,7 @@ export const ensureCreateFile = async (
  */
 export const ensureCreateDir = async (path: string) => {
 	try {
-		await fse.ensureDir(path)
+		await ensureDir(path)
 	} catch (err: any) {
 		console.log(err.message as string)
 	}
@@ -55,5 +61,38 @@ export const ensureCreateDir = async (path: string) => {
  * 路径判断
  */
 export const isPathExists = (path: string) => {
-	return fse.pathExistsSync(path)
+	return pathExistsSync(path)
+}
+
+/**
+ * 文件复制
+ */
+export const copy = async (src: string, dest: string) => {
+	try {
+		await fseCopy(src, dest)
+	} catch (err: any) {
+		console.log(err.message)
+	}
+}
+
+interface IGenHandler {
+	(origin: string, payload: any): string
+}
+
+/**
+ * 创建一个替换模板
+ */
+export const createGenWithTemplate = (
+	templateSrc: string,
+	genHandler: IGenHandler
+) => {
+	return async (dest: string, payload: any) => {
+		const file = await readFile(templateSrc)
+		const result = genHandler(file.toString(), payload)
+		try {
+			await ensureCreateFile(dest, result)
+		} catch (err: any) {
+			console.log(err.message as string)
+		}
+	}
 }
