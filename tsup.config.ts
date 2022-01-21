@@ -1,4 +1,5 @@
 import { defineConfig } from 'tsup'
+import { dependencies } from './package.json'
 
 export default defineConfig({
 	dts: true,
@@ -7,5 +8,5 @@ export default defineConfig({
 	outDir: 'dist',
 	format: ['cjs', 'esm'],
 	entry: ['src/index.ts'],
-	minify: true
+	noExternal: Object.keys(dependencies)
 })
