@@ -1,9 +1,21 @@
-import { templateCompile } from '../../src'
+import { templateCompile, handlebars } from '../../src'
 
-const template = templateCompile('世界, {{msg}}')
+const template = templateCompile('世界, {{up msg}}')
 
-console.log(
-	template({
-		msg: '你好'
-	})
-)
+const run = async () => {
+	try {
+		await handlebars.registerHelper(
+			'up',
+			v => v.charAt(0).toUpperCase() + v.slice(1)
+		)
+	} catch (error) {
+		console.log(error.message)
+	}
+	console.log(
+		template({
+			msg: 'masdasd'
+		})
+	)
+}
+
+run()

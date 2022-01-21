@@ -1,4 +1,5 @@
-export {
-	compile as templateCompile,
-	registerHelper as templateCompileHelper
-} from 'handlebars'
+import handlebars from 'handlebars'
+
+export { compile as templateCompile } from 'handlebars'
+
+export { handlebars }
